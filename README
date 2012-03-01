@@ -2,13 +2,13 @@ Description: @timeout decorator to stop executing functions
 
 Usage example:
 
-    from timeout import timeout
+from timeout import timeout
 
-    @timeout(5) #time in seconds
-    def my_function():
-        while True:
-            print 'processing...'
-            time.sleep(1)
+@timeout(5) #time in seconds
+def my_function():
+    while True:
+        print 'processing...'
+        time.sleep(1)
 
 
 Thanks to https://github.com/felipecruz via https://gist.github.com/1944172
