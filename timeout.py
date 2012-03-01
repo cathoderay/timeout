@@ -20,6 +20,7 @@ import signal
 class TimedOutException(Exception):
     pass
 
+
 def timeout(value):
     def wrap(fn):
         def signal_handler(signum, frame):
