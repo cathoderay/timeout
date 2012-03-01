@@ -1,1 +1,11 @@
-@timeout decorator to stop executing functions
+Description: @timeout decorator to stop executing functions
+
+Usage example:
+
+    from timeout import timeout
+
+    @timeout(5) #time in seconds
+    def my_function():
+        while True:
+            print 'processing...'
+            time.sleep(1)
