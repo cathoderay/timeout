@@ -17,10 +17,13 @@ import time
 import signal
 
 
+class TimedOutException(Exception):
+    pass
+
 def timeout(value):
     def wrap(fn):
         def signal_handler(signum, frame):
-            raise Exception()
+            raise TimedOutException 
 
         def wrapper(*args, **kwargs):
             try:
@@ -28,7 +31,8 @@ def timeout(value):
                     signal.signal(signal.SIGALRM, signal_handler)
                     signal.alarm(value)
                 return fn(*args, **kwargs)
-            except Exception:
+            except TimedOutException:
+                print "timed out!" #remove this line if convenient
                 return None
         return wrapper
     return wrap
