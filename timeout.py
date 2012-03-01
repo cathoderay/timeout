@@ -1,6 +1,11 @@
 """
  File: timeout.py
  Description: @timeout decorator to stop the execution of a function
+ Author: Ronald Kaiser <raios dot catodicos at gmail dot com>
+ Github: https://github.com/cathoderay/timeout
+ Thanks to: Felipe Cruz
+ Last changes: March, 2012
+
  Usage example:
 
      from timeout import timeout
@@ -24,7 +29,7 @@ class TimedOutException(Exception):
 def timeout(value):
     def wrap(fn):
         def signal_handler(signum, frame):
-            raise TimedOutException 
+            raise TimedOutException
 
         def wrapper(*args, **kwargs):
             try:
