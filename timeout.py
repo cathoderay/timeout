@@ -26,17 +26,17 @@ class TimedOutException(Exception):
     pass
 
 
-def timeout(period=None, callback=None):
+def timeout(delay=None, callback=None):
     def wrap(fn):
         def signal_handler(signum, frame):
             raise TimedOutException
 
         def wrapper(*args, **kwargs):
-            if period == None:
+            if delay == None:
                 return fn(*args, **kwargs)
             try:
                 signal.signal(signal.SIGALRM, signal_handler)
-                signal.alarm(period)
+                signal.alarm(delay)
                 return fn(*args, **kwargs)
             except TimedOutException:
                 if callback != None: 

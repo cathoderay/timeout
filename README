@@ -22,7 +22,7 @@ def my_callback():
     print 'finished by timeout'
 
 
-@timeout(period=5, callback=my_callback) 
+@timeout(delay=5, callback=my_callback) 
 def my_function():
     ...
 
