@@ -32,14 +32,17 @@ def timeout(period=None, callback=None):
             raise TimedOutException
 
         def wrapper(*args, **kwargs):
+            if period == None:
+                return fn(*args, **kwargs)
             try:
-                if period != None:
-                    signal.signal(signal.SIGALRM, signal_handler)
-                    signal.alarm(period)
+                signal.signal(signal.SIGALRM, signal_handler)
+                signal.alarm(period)
                 return fn(*args, **kwargs)
             except TimedOutException:
-                if callback != None:
-                    callback()
+                if callback != None: 
+                    return callback()
                 return None
+            finally:
+                signal.alarm(0)
         return wrapper
     return wrap
