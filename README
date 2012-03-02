@@ -1,15 +1,34 @@
-Description: @timeout decorator to stop executing functions
+============
+Description:
+============ 
+@timeout decorator to stop executing functions
 
-Usage example:
 
-------------------------------
+======
+Usage:
+======
+# import the module
 from timeout import timeout
 
-@timeout(5) #time in seconds
-def my_function():
-    while True:
-        print 'processing...'
-        time.sleep(1)
-------------------------------
 
+# add the decorator, and voilà!
+@timeout(5)
+def my_function():
+    ...
+
+
+# it may be defined a callback, like this:
+
+
+def my_callback():
+    print 'finished by timeout'
+
+
+@timeout(period=5, callback=my_callback) 
+def my_function():
+    ...
+
+===============
+Acknowledments:
+===============
 Thanks to https://github.com/felipecruz via https://gist.github.com/1944172
