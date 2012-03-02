@@ -12,7 +12,7 @@ from timeout import timeout
 
 
 # add the decorator, and voilà!
-@timeout(5)
+@timeout(5) #time in seconds
 def my_function():
     ...
 
