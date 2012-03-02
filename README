@@ -18,8 +18,6 @@ def my_function():
 
 
 # it may be defined a callback, like this:
-
-
 def my_callback():
     print 'finished by timeout'
 
